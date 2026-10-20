@@ -5,7 +5,6 @@ const CONFIG = {
   phone: "+971 50 000 0000",         // shown on site
   email: "hello@safehandover.ae",
   formspreeId: "",                   // e.g. "xykaygyq" — leave empty to send leads via WhatsApp instead
-  gaId: "",                          // GA4 measurement ID, e.g. "G-XXXXXXXXXX"
 };
 
 // Indicative pricing (AED). TODO: confirm rates with inspection partner before launch.
@@ -15,18 +14,8 @@ const PRICING = {
   dlp:      { apartment: { rate: 0.9, min: 700 },  townhouse: { rate: 0.75, min: 1600 }, villa: { rate: 0.7, min: 2200 } },
 };
 
-/* ---------- Analytics ---------- */
-window.dataLayer = window.dataLayer || [];
-function gtag() { dataLayer.push(arguments); }
-if (CONFIG.gaId) {
-  const s = document.createElement("script");
-  s.async = true;
-  s.src = "https://www.googletagmanager.com/gtag/js?id=" + CONFIG.gaId;
-  document.head.appendChild(s);
-  gtag("js", new Date());
-  gtag("config", CONFIG.gaId);
-}
-function track(name, params) { if (CONFIG.gaId) gtag("event", name, params || {}); }
+/* ---------- Analytics (GA4 tag is in each page's <head>) ---------- */
+function track(name, params) { if (typeof gtag === "function") gtag("event", name, params || {}); }
 
 /* ---------- Contact links ---------- */
 const waLink = (text) => "https://wa.me/" + CONFIG.whatsapp + (text ? "?text=" + encodeURIComponent(text) : "");
