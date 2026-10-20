@@ -3,7 +3,7 @@ const CONFIG = {
   // TODO: set before launch
   whatsapp: "971500000000",          // international format, digits only
   phone: "+971 50 000 0000",         // shown on site
-  email: "hello@safehandover.ae",
+  email: "info@safehandover.ae",
   formspreeId: "",                   // e.g. "xykaygyq" — leave empty to send leads via WhatsApp instead
 };
 
